@@ -4,6 +4,9 @@
  */
 package VISAO;
 
+import DAO.ProdutoDAO;
+import DTO.ProdutoDTO;
+
 /**
  *
  * @author tarci
@@ -29,51 +32,80 @@ public class frmPrdotu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtDescricao = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtUnidade = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Produtos");
         getContentPane().setLayout(null);
 
         jLabel2.setText("Nome");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(28, 38, 48, 35);
+        jLabel2.setBounds(20, 70, 48, 35);
 
         jLabel3.setText("Descricao");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(28, 102, 70, 16);
+        jLabel3.setBounds(20, 150, 70, 16);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtDescricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(134, 91, 200, 38);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(94, 35, 240, 38);
+        getContentPane().add(txtDescricao);
+        txtDescricao.setBounds(150, 140, 200, 38);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(120, 70, 240, 38);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Unidade");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(28, 163, 44, 16);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(94, 160, 240, 40);
+        jLabel4.setBounds(20, 210, 60, 20);
+        getContentPane().add(txtUnidade);
+        txtUnidade.setBounds(110, 210, 260, 30);
 
-        jButton1.setText("Cadastrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(20, 240, 80, 23);
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCadastrar);
+        btnCadastrar.setBounds(20, 260, 80, 23);
 
-        pack();
+        setSize(new java.awt.Dimension(421, 308));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtDescricaoActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        // TODO add your handling code here:
+        String nome, descricao;
+        int unidade;
+        nome= txtNome.getText();
+        descricao = txtDescricao.getText();
+        unidade = Integer.parseInt(txtUnidade.getText());
+        ProdutoDTO objprodutodto = new ProdutoDTO();
+        objprodutodto.setNome_material(nome);
+        objprodutodto.setDescricao_material(descricao);
+        objprodutodto.setQuantidade_material(unidade);
+        ProdutoDAO objprodutodao = new ProdutoDAO();
+        objprodutodao.cadastrarProduto(objprodutodto);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,13 +143,13 @@ public class frmPrdotu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtDescricao;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 }
