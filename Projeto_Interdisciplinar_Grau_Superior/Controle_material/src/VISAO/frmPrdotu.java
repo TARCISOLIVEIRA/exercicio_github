@@ -6,6 +6,10 @@ package VISAO;
 
 import DAO.ProdutoDAO;
 import DTO.ProdutoDTO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,6 +43,9 @@ public class frmPrdotu extends javax.swing.JFrame {
         txtUnidade = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaproduto = new javax.swing.JTable();
+        btnPesquisae = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -85,12 +92,38 @@ public class frmPrdotu extends javax.swing.JFrame {
         getContentPane().add(btnCadastrar);
         btnCadastrar.setBounds(20, 260, 100, 27);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel6.setText("Cadastro de Materiais ");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 30, 210, 30);
+        jLabel6.setBounds(50, 20, 380, 50);
 
-        setSize(new java.awt.Dimension(421, 344));
+        tabelaproduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaproduto);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 300, 470, 140);
+
+        btnPesquisae.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPesquisae.setText("Pesquisar");
+        btnPesquisae.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPesquisae);
+        btnPesquisae.setBounds(140, 260, 110, 27);
+
+        setSize(new java.awt.Dimension(506, 460));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -110,6 +143,7 @@ public class frmPrdotu extends javax.swing.JFrame {
         objprodutodto.setDescricao_material(descricao);
         objprodutodto.setQuantidade_material(unidade);
         ProdutoDAO objprodutodao = new ProdutoDAO();
+        
         objprodutodao.cadastrarProduto(objprodutodto);
         
         
@@ -118,6 +152,12 @@ public class frmPrdotu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnPesquisaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaeActionPerformed
+        // TODO add your handling code here:
+        
+        listarValores();
+    }//GEN-LAST:event_btnPesquisaeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,14 +196,44 @@ public class frmPrdotu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnPesquisae;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaproduto;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
+
+private void listarValores(){
+    try {
+        ProdutoDAO objprodutoDAO = new ProdutoDAO();
+        
+        DefaultTableModel model = (DefaultTableModel) tabelaproduto.getModel();
+        model.setNumRows(0);
+        
+        ArrayList<ProdutoDTO>lista = objprodutoDAO.PesquisarProduto();
+        
+        for(int num = 0; num <lista.size(); num++){
+            model.addRow(new Object[]{
+                lista.get(num).getId_material(),
+                lista.get(num).getNome_material(),
+                lista.get(num).getDescricao_material(),
+                lista.get(num).getQuantidade_material()
+                
+                
+            });
+        }
+        
+    } catch (Exception erro) {
+        
+        JOptionPane.showMessageDialog(null,"Lista valores " + erro);
+    }
+}
+
 }
