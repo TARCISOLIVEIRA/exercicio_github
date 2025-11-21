@@ -30,6 +30,7 @@ public class frmPrdotu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
@@ -37,20 +38,25 @@ public class frmPrdotu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtUnidade = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
+
+        jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
         getContentPane().setLayout(null);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nome");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 70, 48, 35);
+        jLabel2.setBounds(20, 90, 48, 35);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Descricao");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 150, 70, 16);
+        jLabel3.setBounds(20, 150, 70, 20);
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,17 +64,18 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtDescricao);
-        txtDescricao.setBounds(150, 140, 200, 38);
+        txtDescricao.setBounds(120, 150, 250, 30);
         getContentPane().add(txtNome);
-        txtNome.setBounds(120, 70, 240, 38);
+        txtNome.setBounds(120, 90, 240, 30);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Unidade");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 210, 60, 20);
         getContentPane().add(txtUnidade);
         txtUnidade.setBounds(110, 210, 260, 30);
 
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,9 +83,14 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(20, 260, 80, 23);
+        btnCadastrar.setBounds(20, 260, 100, 27);
 
-        setSize(new java.awt.Dimension(421, 308));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setText("Cadastro de Materiais ");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(90, 30, 210, 30);
+
+        setSize(new java.awt.Dimension(421, 344));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -148,6 +160,8 @@ public class frmPrdotu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtUnidade;
