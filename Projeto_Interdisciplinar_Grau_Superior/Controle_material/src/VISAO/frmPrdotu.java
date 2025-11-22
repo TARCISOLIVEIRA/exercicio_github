@@ -51,6 +51,8 @@ public class frmPrdotu extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         CarregaCampos = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        AlterarProduto = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -127,7 +129,7 @@ public class frmPrdotu extends javax.swing.JFrame {
         getContentPane().add(txtCodigo);
         txtCodigo.setBounds(120, 112, 100, 30);
 
-        CarregaCampos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        CarregaCampos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CarregaCampos.setText("Carregar Campos");
         CarregaCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +137,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CarregaCampos);
-        CarregaCampos.setBounds(360, 473, 137, 30);
+        CarregaCampos.setBounds(327, 473, 150, 30);
 
         btnLimpar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLimpar.setText("Limpar");
@@ -145,7 +147,27 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimpar);
-        btnLimpar.setBounds(130, 300, 90, 27);
+        btnLimpar.setBounds(10, 470, 90, 27);
+
+        AlterarProduto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AlterarProduto.setText("Alterar");
+        AlterarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlterarProdutoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AlterarProduto);
+        AlterarProduto.setBounds(130, 300, 90, 30);
+
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluir);
+        btnExcluir.setBounds(230, 300, 90, 30);
 
         setSize(new java.awt.Dimension(506, 542));
         setLocationRelativeTo(null);
@@ -173,6 +195,21 @@ public class frmPrdotu extends javax.swing.JFrame {
         // TODO add your handling code here:
         LimparCampos();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void AlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarProdutoActionPerformed
+        // TODO add your handling code here:
+        AlterarProduto();
+        listarValores();
+        LimparCampos();
+    }//GEN-LAST:event_AlterarProdutoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        ExcluirProduto();
+        listarValores();
+        LimparCampos();
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,8 +247,10 @@ public class frmPrdotu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AlterarProduto;
     private javax.swing.JButton CarregaCampos;
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -286,5 +325,41 @@ private void cadastrarProduto(){
       txtDescricao.setText("");
       txtUnidade.setText("");
       txtNome.requestFocus();
+  }
+  
+  private void AlterarProduto(){
+      int id_produto, unidade;
+      String nome, descricao;
+      
+      id_produto = Integer.parseInt(txtCodigo.getText());
+      nome = txtNome.getText();
+      descricao = txtDescricao.getText();
+      unidade = Integer.parseInt(txtUnidade.getText());
+      
+      ProdutoDTO objprodutodto = new ProdutoDTO();
+      objprodutodto.setId_material(id_produto);
+      objprodutodto.setNome_material(nome);
+      objprodutodto.setDescricao_material(descricao);
+      objprodutodto.setQuantidade_material(unidade);
+      
+      ProdutoDAO objprodutodao = new ProdutoDAO();
+      objprodutodao.alterarProduto(objprodutodto);
+       
+  }
+  
+  private void ExcluirProduto(){
+      int id_produto;
+      
+      id_produto = Integer.parseInt(txtCodigo.getText());
+      
+      ProdutoDTO objProdutodto = new ProdutoDTO();
+      objProdutodto.setId_material(id_produto);
+      
+      ProdutoDAO objprodutodao = new ProdutoDAO();
+      objprodutodao.excluirProduto(objProdutodto);
+      
+      
+      
+      
   }
 }

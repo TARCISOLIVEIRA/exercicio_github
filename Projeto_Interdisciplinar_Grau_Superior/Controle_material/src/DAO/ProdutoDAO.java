@@ -32,9 +32,9 @@ public class ProdutoDAO {
 
         } catch (SQLException erro) {
 
-            JOptionPane.showMessageDialog(null, "ProdutoDAO" + erro);
-
+            JOptionPane.showMessageDialog(null, "ProdutoDAO cadastrar" + erro);
         }
+        
     }
     
     public ArrayList<ProdutoDTO>PesquisarProduto(){
@@ -59,6 +59,52 @@ public class ProdutoDAO {
             JOptionPane.showMessageDialog(null,"ProdutoDAO pesquisar" + erro);
         }
         return lista;
+    }
+    
+    public void alterarProduto(ProdutoDTO objprodutodto){
+        String sql = "update materiais set nome = ?, descricao = ?, unidade = ? where id = ?";
+        
+        con = new ConexaoDAO().conectaBanco();
+        
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, objprodutodto.getNome_material());
+            pstm.setString(2, objprodutodto.getDescricao_material());
+            pstm.setInt(3,objprodutodto.getQuantidade_material());
+            pstm.setInt(4, objprodutodto.getId_material());
+            
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "ProdutoDAO Alterar" + erro);
+        }
+        
+        
+    }
+    
+    public void excluirProduto(ProdutoDTO objprodutodto){
+        String sql = "delete from materiais  where id = ?";
+        
+        con = new ConexaoDAO().conectaBanco();
+        
+        try {
+            pstm = con.prepareStatement(sql);
+            
+            pstm.setInt(1, objprodutodto.getId_material());
+            
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "ProdutoDAO Excluir" + erro);
+        }
+        
+        
+        
+        
     }
 
 }
