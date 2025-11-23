@@ -39,6 +39,7 @@ public class ProdutoDAO {
     
     public ArrayList<ProdutoDTO>PesquisarProduto(){
         String sql = "select * from materiais";
+        
         con = new ConexaoDAO().conectaBanco();
         try {
             
@@ -102,9 +103,31 @@ public class ProdutoDAO {
             JOptionPane.showMessageDialog(null, "ProdutoDAO Excluir" + erro);
         }
         
+    }
+    
+    public void adicionarProduto(ProdutoDTO dto){
+        
+        String sql = "update materiais set unidade = unidade + ?";
+        
+        
+        con = new ConexaoDAO().conectaBanco();
+
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, dto.getNome_material());
+            pstm.setInt(3,dto.getQuantidade_material());
+            
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "ProdutoDAO Entrada" + erro);
+        }
+        
+       
         
         
         
     }
-
 }
