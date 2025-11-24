@@ -106,16 +106,13 @@ public class ProdutoDAO {
     }
     
     public void adicionarProduto(ProdutoDTO dto){
-        
-        String sql = "update materiais set unidade = unidade + ?";
-        
-        
+        String sql = "update materiais set unidade = unidade + ? where id = ?";
         con = new ConexaoDAO().conectaBanco();
 
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, dto.getNome_material());
-            pstm.setInt(3,dto.getQuantidade_material());
+            pstm.setInt(1, dto.getQuantidade_material());
+            pstm.setInt(2,dto.getId_material());
             
             pstm.execute();
             pstm.close();
@@ -125,9 +122,27 @@ public class ProdutoDAO {
             JOptionPane.showMessageDialog(null, "ProdutoDAO Entrada" + erro);
         }
         
-       
-        
-        
+    }
+    
+    
+    
+    public void subtrairProduto(ProdutoDTO dto){
+        String sql = "update materiais set unidade = unidade - ? where id = ?";
+        con = new ConexaoDAO().conectaBanco();
+
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1, dto.getQuantidade_material());
+            pstm.setInt(2,dto.getId_material());
+            
+            pstm.execute();
+            pstm.close();
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "ProdutoDAO saida" + erro);
+        }
         
     }
+    
 }
