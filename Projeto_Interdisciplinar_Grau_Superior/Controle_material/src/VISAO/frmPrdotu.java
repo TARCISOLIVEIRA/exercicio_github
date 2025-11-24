@@ -52,10 +52,11 @@ public class frmPrdotu extends javax.swing.JFrame {
         btnLimpar = new javax.swing.JButton();
         AlterarProduto = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        Adicionar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        Adicionar = new javax.swing.JButton();
         btnSubtrair = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -171,13 +172,6 @@ public class frmPrdotu extends javax.swing.JFrame {
         getContentPane().add(btnExcluir);
         btnExcluir.setBounds(420, 180, 140, 40);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel6.setText("CADASTRO DE PRODUTO");
-        jPanel2.add(jLabel6);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 780, 90);
-
         Adicionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/add1.png"))); // NOI18N
         Adicionar.setText("Entrada Produto");
@@ -189,7 +183,15 @@ public class frmPrdotu extends javax.swing.JFrame {
         getContentPane().add(Adicionar);
         Adicionar.setBounds(574, 180, 176, 40);
 
-        btnSubtrair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel6.setText("CADASTRO DE PRODUTO");
+        jPanel2.add(jLabel6);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 780, 70);
+
+        btnSubtrair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSubtrair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/sair_1.png"))); // NOI18N
         btnSubtrair.setText("Saida Produto");
         btnSubtrair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +199,11 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSubtrair);
-        btnSubtrair.setBounds(580, 233, 170, 40);
+        btnSubtrair.setBounds(580, 223, 170, 50);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/ico.png"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(680, 60, 70, 60);
 
         setSize(new java.awt.Dimension(794, 515));
         setLocationRelativeTo(null);
@@ -306,6 +312,7 @@ public class frmPrdotu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaproduto;
@@ -363,7 +370,7 @@ private void cadastrarProduto(){
         objprodutodto.setQuantidade_material(unidade);
         ProdutoDAO objprodutodao = new ProdutoDAO();
         objprodutodao.cadastrarProduto(objprodutodto);
-        
+        JOptionPane.showMessageDialog(null,"Cadastrado com Sucesso");
 }
 
   private void LimparCampos(){
@@ -391,7 +398,7 @@ private void cadastrarProduto(){
       
       ProdutoDAO objprodutodao = new ProdutoDAO();
       objprodutodao.alterarProduto(objprodutodto);
-       
+      JOptionPane.showMessageDialog(null,"Alterado com sucesso"); 
   }
   
   private void ExcluirProduto(){
@@ -404,6 +411,7 @@ private void cadastrarProduto(){
       
       ProdutoDAO objprodutodao = new ProdutoDAO();
       objprodutodao.excluirProduto(objProdutodto);
+      JOptionPane.showMessageDialog(null,"Excluido com sucesso");
   }
   
   private void adicionarProduto(){
@@ -414,7 +422,7 @@ private void cadastrarProduto(){
        ProdutoDAO dao = new ProdutoDAO();
        dao.adicionarProduto(dto);
        
-       JOptionPane.showMessageDialog(null,"Quantidade adicionada");
+      JOptionPane.showMessageDialog(null,"Quantidade adicionada com sucesso");
   }
   
   
@@ -426,7 +434,7 @@ private void cadastrarProduto(){
       ProdutoDAO dao = new ProdutoDAO();
       dao.subtrairProduto(dto);
        
-       JOptionPane.showMessageDialog(null,"Quantidade Subtraida");
+      JOptionPane.showMessageDialog(null,"Quantidade Subtraida com sucesso");
   }
  
 }
