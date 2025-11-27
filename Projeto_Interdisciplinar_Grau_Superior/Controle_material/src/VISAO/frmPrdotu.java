@@ -37,6 +37,7 @@ public class frmPrdotu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
@@ -57,10 +58,13 @@ public class frmPrdotu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnSubtrair = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
         jLabel5.setText("jLabel5");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
@@ -102,7 +106,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(420, 80, 140, 40);
+        btnCadastrar.setBounds(420, 70, 140, 40);
 
         tabelaproduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +122,7 @@ public class frmPrdotu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaproduto);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 280, 750, 230);
+        jScrollPane1.setBounds(10, 270, 750, 160);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Codigo");
@@ -148,7 +152,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimpar);
-        btnLimpar.setBounds(420, 230, 140, 40);
+        btnLimpar.setBounds(420, 220, 140, 40);
 
         AlterarProduto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         AlterarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/editar_1_1.png"))); // NOI18N
@@ -159,7 +163,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(AlterarProduto);
-        AlterarProduto.setBounds(420, 130, 140, 40);
+        AlterarProduto.setBounds(420, 120, 140, 40);
 
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/excluir.png"))); // NOI18N
@@ -170,7 +174,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExcluir);
-        btnExcluir.setBounds(420, 180, 140, 40);
+        btnExcluir.setBounds(420, 170, 140, 40);
 
         Adicionar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/add1.png"))); // NOI18N
@@ -181,7 +185,7 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Adicionar);
-        Adicionar.setBounds(574, 180, 176, 40);
+        Adicionar.setBounds(570, 170, 176, 40);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel6.setText("CADASTRO DE PRODUTO");
@@ -199,13 +203,24 @@ public class frmPrdotu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSubtrair);
-        btnSubtrair.setBounds(580, 223, 170, 50);
+        btnSubtrair.setBounds(570, 210, 170, 50);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/ico.png"))); // NOI18N
         getContentPane().add(jLabel8);
         jLabel8.setBounds(680, 60, 70, 60);
 
-        setSize(new java.awt.Dimension(794, 515));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/sair_1.png"))); // NOI18N
+        jButton2.setText("Sair do Programa ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(540, 450, 220, 40);
+
+        setSize(new java.awt.Dimension(794, 529));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,6 +277,11 @@ public class frmPrdotu extends javax.swing.JFrame {
         LimparCampos();
     }//GEN-LAST:event_btnSubtrairActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +325,8 @@ public class frmPrdotu extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSubtrair;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
